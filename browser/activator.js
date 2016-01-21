@@ -122,9 +122,12 @@ function back (e) {
   global.DEBUG && global.DEBUG('[activator] backwards history navigation with state', s);
   var model = s.model;
   var route = router(location.href);
+  var options = model ? model.__options : null;
+  var scroll = options ? options.scroll : true;
+
   navigation(route, model, 'replaceState');
-  view(state.container, null, model, route);
-  scrollInto(id(route.hash));
+  view(state.container, null, model, route, options);
+  scrollInto(id(route.hash), scroll);
 }
 
 function scrollInto (id, enabled) {
