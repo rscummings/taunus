@@ -122,7 +122,7 @@ function back (e) {
   global.DEBUG && global.DEBUG('[activator] backwards history navigation with state', s);
   var model = s.model;
   var route = router(location.href);
-  var options = model ? model.options : null;
+  var options = model ? model.__options : null;
   var scroll = options ? options.scroll : true;
 
   navigation(route, model, 'replaceState');
